@@ -4,6 +4,11 @@ import { Route, Routes } from 'react-router-dom'
 import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react'
 import Dashboard from './pages/Dashboard';
 import AppShell from './components/AppShell';
+import CreateInvoice from './pages/CreateInvoice';
+import Invoices from './pages/Invoices';
+import InvoicePreview from './components/InvoicePreview';
+import BusinessProfile from './pages/BusinessProfile';
+import NotFound from './pages/NotFound';
 
 
 const ClerkProtected = ({ children }) => (
@@ -30,6 +35,15 @@ const App = () => {
       >
       <Route index element={<Dashboard />} />
       <Route path="dashboard" element={<Dashboard />} />
+      <Route path="create-invoice" element={<CreateInvoice />} />
+      <Route path="invoices" element={<Invoices />} />
+      <Route path="invoices/new" element={<CreateInvoice />} />
+      <Route path="invoices/:id" element={<InvoicePreview />} />
+      <Route path="invoices/:id/preview" element={<InvoicePreview />} />
+      <Route path="invoices/:id/edit" element={<CreateInvoice />} />
+      <Route path="business" element={<BusinessProfile />} />
+
+      <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
     </div>
